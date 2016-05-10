@@ -1,6 +1,6 @@
-title:            Site Title
-description:      Describe your website here.
-disqus_shortname: 
+title:            Frost Blog
+description:      Blog posts about Ciena Frost components
+disqus_shortname: frostblog
 reading_time:     true
 words_per_minute: 200
 # Your site's domain goes here (eg: //mmistakes.github.io, http://mademistakes.com, etc)
@@ -9,14 +9,14 @@ url:
 
 # Owner/author information
 owner:
-  name:           Your Name
-  avatar:         avatar.jpg
-  bio:            "Your bio goes here. It shouldn't be super long but a good sentence or two should suffice."
-  email:          you@email.com
+  name:           Ciena Frost
+  avatar:         FROST_LOGO.png
+  bio:            "Ciena design conventions, styles, components, patterns and tools for Ember"
+  email:          
   # Social networking links used in footer. Update and remove as you like.
   twitter:        
   facebook:       
-  github:         
+  github: ciena-frost         
   stackexchange:  
   linkedin:       
   instagram:      

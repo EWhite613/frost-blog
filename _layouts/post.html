@@ -37,6 +37,9 @@
           {% include read-time.html %}
         </p><!-- /.entry-reading-time -->
         {% endif %}
+        {% if page.author %}
+        <h2 class="entry-author">Author: {{ page.author }}</h2>
+        {% endif %}
       </div><!-- /.header-title-wrap -->
     </header>
     <div class="entry-content">

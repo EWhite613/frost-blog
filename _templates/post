@@ -2,6 +2,7 @@
 layout: {{ layout }}
 title: {{ title }}
 modified:
+author: {{ author }}
 categories: {{ dir }}
 description:
 tags: []
