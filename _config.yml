@@ -1,6 +1,6 @@
 title:            Frost Blog
 description:      Blog posts about Ciena Frost components
-disqus_shortname: frostblog
+disqus_shortname: 
 reading_time:     true
 words_per_minute: 200
 # Your site's domain goes here (eg: //mmistakes.github.io, http://mademistakes.com, etc)
