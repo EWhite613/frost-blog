@@ -16,12 +16,12 @@ Must be using Mocha
 Inside an integration or acceptance test you can use `return capture('<image-label>')` at the end of an `it()` function. You can also use this functionality if you wish to:
 
 ~~~ javascript
-    capture('<image-label>', <width>, <height>).then(function (data) {
-      console.log(arguments)
-      done()
-    }).catch(function (err) {
-      done(err)
-    })
+capture('<image-label>', <width>, <height>).then(function (data) {
+  console.log(arguments)
+  done()
+}).catch(function (err) {
+  done(err)
+})
 ~~~
 
 In this case done comes from `it('test', function (done) { ... }`. But you can also use this format to get creative rather than using done.
