@@ -14,14 +14,16 @@ Must be using Mocha
 
 # Usage
 Inside an integration or acceptance test you can use `return capture('<image-label>')` at the end of an `it()` function. You can also use this functionality if you wish to:
-```javascript
-capture('<image-label>', <width>, <height>).then(function (data) {
-  console.log(arguments)
-  done()
-}).catch(function (err) {
-  done(err)
-})
-```
+
+~~~ javascript
+    capture('<image-label>', <width>, <height>).then(function (data) {
+      console.log(arguments)
+      done()
+    }).catch(function (err) {
+      done(err)
+    })
+~~~
+
 In this case done comes from `it('test', function (done) { ... }`. But you can also use this format to get creative rather than using done.
 `arguments` will display the response from ResembleJS or the message, 'No passed image. Saving current test as base', if it matches the scenario described.
 ### Larger frame
@@ -31,14 +33,14 @@ Replace `ember test` with `ember tva --pr-api-url=http://openshiftvisualacceptan
 
 Add your github credentials to `before_script:`
 
-```yaml
+~~~ yaml
 - git config --global user.email "<github-email>"
 - git config --global user.name "<user-name>"
 - git config --global push.default simple
 - npm set progress=false
 - git config credential.helper "store --file=.git/credentials"
 - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-```
+~~~
 
 Add GH_TOKEN to Travis. Personal Access Token must have push access
 
@@ -46,19 +48,19 @@ Add RO_GH_TOKEN Unsecure token that can only read.
 
 ## Using latest firefox
 Add this to your .travis.yml
-```yaml
+
+~~~ yaml
 addons:
   firefox: "latest"
-```
-
+~~~
 And enable the display
 
-```yaml
+~~~ yaml
 before_script:
 - "export DISPLAY=:99.0"
 - "sh -e /etc/init.d/xvfb start"
 - sleep 3 # give xvfb some time to start
-```
+~~~
 
 ## Using PhantomJS
 You can also use PhantomJS. We have included bluebird (A library that provides promises) and JQuery in your vendor files. These libraries are both imported when running `ember test`. I recommend using PhantomJS 1.9.8 rather than 2.0. I've had weird experiences with 2.0 but you are welcome to try it.
@@ -66,7 +68,9 @@ You can also use PhantomJS. We have included bluebird (A library that provides p
 ## SlimerJS
 Slimerjs is also another good option. But I've had trouble trying to get SlimerJS launcher to close on Linux with Mocha.
 Here is the launcher I used for `testem.js`
-```javascript
+
+
+~~~ javascript
 /* Testem usage
 'launchers': {
     'slimerjs': {
@@ -92,4 +96,4 @@ page.onError = function (msg, trace) {
     console.log('  ', item.file, ':', item.line)
   })
 }
-```
+~~~
