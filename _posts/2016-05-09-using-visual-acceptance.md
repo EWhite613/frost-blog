@@ -41,10 +41,15 @@ Add your github credentials to `before_script:`
 - git config credential.helper "store --file=.git/credentials"
 - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 ~~~
+**Secure Variables (Display value in build log = `OFF`)**
 
-Add GH_TOKEN to Travis. Personal Access Token must have push access
+* Add GH_TOKEN to Travis. Personal Access Token must have push access
 
-Add RO_GH_TOKEN Unsecure token that can only read.
+**Unsecure Variables (Display value in build log = `ON`)**
+
+* Add RO_GH_TOKEN Unsecure token that can only read.
+
+* Add VISUAL_ACCEPTANCE_TOKEN token, value: `6f21799bb49329efa1346281d2f61d57351c0e91`
 
 ## Using latest firefox
 Add this to your .travis.yml
