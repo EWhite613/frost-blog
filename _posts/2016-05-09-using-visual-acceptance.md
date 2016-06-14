@@ -49,7 +49,7 @@ Add your github credentials to `before_script:`
 
 * Add RO_GH_TOKEN Unsecure token that can only read.
 
-* Add VISUAL_ACCEPTANCE_TOKEN token, value can be found here: https://travis-ci.org/ciena-frost/ember-frost-file-picker/jobs/137522760#L275
+* Add VISUAL_ACCEPTANCE_TOKEN token, value can be found [here](https://travis-ci.org/ciena-frost/ember-frost-file-picker/jobs/137522760#L275)
 
 ## Using latest firefox
 Add this to your .travis.yml
