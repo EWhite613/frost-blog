@@ -29,7 +29,7 @@ In this case done comes from `it('test', function (done) { ... }`. But you can a
 ### Larger frame
  Html2Canvas does not handle the `zoom` css property that Mocha uses to scale the `ember-testing` container to `50%`. In order to view a larger container if you wish to go beyond the default 640x340px dimensions you can supply the width and height to the capture function. The following shows an example to get 1920x1080 container: `capture('<image-label>', 1920, 1080)`
 # Setting up travis
-Replace `ember test` with `ember tva --pr-api-url=http://openshiftvisualacceptance-ewhite.rhcloud.com/comment`
+Replace `ember test` with `ember tva`
 
 Add your github credentials to `before_script:`
 
@@ -102,3 +102,6 @@ page.onError = function (msg, trace) {
   })
 }
 ~~~
+
+### Notes
+* Travis will upload the reports to Imgur
