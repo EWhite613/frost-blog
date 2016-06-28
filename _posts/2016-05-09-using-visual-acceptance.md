@@ -9,6 +9,7 @@ tags: [ember-cli-visual-acceptance]
 
 # Installation
  Simple as running `ember install ember-cli-visual-acceptance`
+
 ## Requirements
 Must be using Mocha
 
