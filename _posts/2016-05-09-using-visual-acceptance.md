@@ -172,7 +172,20 @@ Html2Canvas relies on Canvas drawing support. I find Chrome has the best Canvas 
 Html2Canvas has difficulties rendering SVGs (more so in Firefox than in Chrome). As a result I have added a new **expermental** functionality that attempts to render the svgs better.
 You can use this experimental feature by setting `experimentalSvgs` to `true` (Example: `capture('svg-experimental'{ experimentalSvgs: true})`).
 
-Experimental SVGs will not be used for PhantomJS and SlimerJS as their rendering handles SVGs (since it's basically just a simple screenshot of the page)
+Experimental SVGs will not be used for PhantomJS, SlimerJS, and Chrome/Chromium (Chrome properly renders svgs with html2canvas) as their rendering handles SVGs (PhantomJS and SlimerJS basically just take a screenshot of the page).
+
+### Using Chromium
+
+To use Chromium on Travis set
+
+~~~ javascript
+// Testem.json
+  "launch_in_ci": [
+    "Chromium"
+  ],
+~~~
+
+If you’re using Mac OS X you’ll have to remove this when testing locally.
 
 ### Using Firefox
 To use Firefox in Travis simply set
