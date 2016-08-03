@@ -3,7 +3,7 @@ layout: post
 title: Using Ember Visual Acceptance
 author: Eric White
 description: "Using ember-cli-visual-acceptance with ember-frost-file-picker"
-modified: 2016-07-18
+modified: 2016-08-03
 tags: [ember-cli-visual-acceptance]
 ---
 
@@ -140,6 +140,7 @@ before_script:
 
 * Add `VISUAL_ACCEPTANCE_TOKEN` token, value can be found [here](https://travis-ci.org/ciena-frost/ember-frost-file-picker/jobs/137522760#L275)
   * If you put the `VISUAL_ACCEPTANCE_TOKEN` directly in your code and commit it to Github; Github will revoke the token.
+  * Alternatively, you can create your own Github account and create a Personal access token (Scope to ` public_repo`) to use.
 
 ## Browsers - html2canvas vs. PhantomJS render callback
 
@@ -160,7 +161,9 @@ Personally I prefer using SlimerJS as their version of Gecko matches the latest 
 
 #### Warning
 
-With certain repositories I've had trouble with SlimerJS having segmentation faults on both Linux and Mac. I've yet to resolve this issue.
+With certain repositories I've had trouble with SlimerJS having segmentation faults on both Linux and Mac. 
+
+The Segmentation Faults are caused by 404'd SVG `xlink:href`'s. This is documented on [ember-cli-visual-acceptance](https://github.com/ciena-blueplanet/ember-cli-visual-acceptance/issues/76) and [slimerjs](https://github.com/laurentj/slimerjs/issues/514).
 
 ### Html2Canvas
 
@@ -172,7 +175,20 @@ Html2Canvas relies on Canvas drawing support. I find Chrome has the best Canvas 
 Html2Canvas has difficulties rendering SVGs (more so in Firefox than in Chrome). As a result I have added a new **expermental** functionality that attempts to render the svgs better.
 You can use this experimental feature by setting `experimentalSvgs` to `true` (Example: `capture('svg-experimental'{ experimentalSvgs: true})`).
 
-Experimental SVGs will not be used for PhantomJS and SlimerJS as their rendering handles SVGs (since it's basically just a simple screenshot of the page)
+Experimental SVGs will not be used for PhantomJS, SlimerJS, and Chrome/Chromium (Chrome properly renders svgs with html2canvas) as their rendering handles SVGs (PhantomJS and SlimerJS basically just take a screenshot of the page).
+
+### Using Chromium
+
+To use Chromium on Travis set
+
+~~~ javascript
+// Testem.json
+  "launch_in_ci": [
+    "Chromium"
+  ],
+~~~
+
+If you’re using Mac OS X you’ll have to remove this when testing locally.
 
 ### Using Firefox
 To use Firefox in Travis simply set
@@ -188,6 +204,21 @@ And add the following to your `.travis.yml` to get the latest version of Firefox
 addons:
   firefox: "latest"
 ~~~
+### Using Chromium
+Chromium is available on Travis Builds. To use Chromium just modify your `Testem.json`
+
+~~~ javascript
+  // Testem.json
+  "launch_in_ci": [
+    "Chromium"
+  ],
+~~~
+
+#### Using Chrome with Travis's Trusty Beta
+
+Chrome can also be used on Travis. Using this [gist](https://gist.github.com/martndemus/79fe2198c628c22b78f4#file-travis-yml).
+
+But seems to not handle SVGs for some reason (works fine on Mac and on Linux using Chromium). I prefer to use Chromium for this reason. A comparison of the produced can be found on one of my [PRs where Chrome is compared against Chromium](https://github.com/ciena-blueplanet/ember-cli-visual-acceptance/pull/77#issuecomment-237241317). Additonally, you can find the Chromium PR [here](https://github.com/ciena-blueplanet/ember-cli-visual-acceptance/pull/72).
 
 ### Using SlimerJS
 Testem.json
